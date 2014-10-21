@@ -176,24 +176,12 @@ var _ = {};
     // over the initial value of the collection if no initial value is specified
     accumulator = accumulator === undefined ? collection[0] : accumulator;
     // !!!!!!!!!!!!!!!!!!!!!!!!!!
-    // This implementation makes a lot more sense
+    // This implementation makes a lot more sense, at least for addition
     //accumulator = accumulator === undefined ? 0 : accumulator;
-
-    /*
-    for (var i = 0; i < collection.length; i++) {
-      iterator(collection[i], i, collection);
-    }
-    */
 
     _.each(collection, function (item, index) {
       accumulator = iterator(accumulator, item);
     });
-
-    /*
-    for (var i = 0; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
-    }
-    */
 
     return accumulator;
   };
