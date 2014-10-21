@@ -118,10 +118,16 @@ var _ = {};
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
-    // map() is a useful primitive iteration function that works a lot
-    // like each(), but in addition to running the operation on all
-    // the members, it also maintains an array of results.
+    for (var i=0; i<collection.length; i++) {
+      collection[i] = iterator(collection[i]);
+    }
+    return collection;
   };
+  // !!!!!!!!!!!!!!!!!!!!!
+  // This implementation of map modifies the passed array, which might
+  // not be the actual way to implement this function. It may need to 
+  // make a copy of the passed array to ensure that the iterator function
+  // can access all of the passed array.
 
   /*
    * TIP: map is really handy when you want to transform an array of
