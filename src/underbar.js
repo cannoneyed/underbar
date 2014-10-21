@@ -179,9 +179,22 @@ var _ = {};
     // This implementation makes a lot more sense
     //accumulator = accumulator === undefined ? 0 : accumulator;
 
+    /*
+    for (var i = 0; i < collection.length; i++) {
+      iterator(collection[i], i, collection);
+    }
+    */
+
+    _.each(collection, function (item, index) {
+      accumulator = iterator(accumulator, item);
+    });
+
+    /*
     for (var i = 0; i < collection.length; i++) {
       accumulator = iterator(accumulator, collection[i]);
     }
+    */
+
     return accumulator;
   };
 
@@ -190,6 +203,7 @@ var _ = {};
     // TIP: Many iteration problems can be most easily expressed in
     // terms of reduce(). Here's a freebie to demonstrate!
     return _.reduce(collection, function(wasFound, item) {
+      console.log(item, target);
       if (wasFound) {
         return true;
       }
