@@ -57,7 +57,7 @@ var _ = {};
   _.each = function(collection, iterator) {
     // Test whether passed collection is an array
     if (Array.isArray(collection)) {
-      for (var i=0; i<collection.length; i++) {
+      for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
     } 
@@ -107,7 +107,7 @@ var _ = {};
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
     var results = [];
-    for (var i=0; i<array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       if (_.indexOf(results, array[i]) === -1) {
         results.push(array[i]);
       }
@@ -118,7 +118,7 @@ var _ = {};
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
-    for (var i=0; i<collection.length; i++) {
+    for (var i = 0; i < collection.length; i++) {
       collection[i] = iterator(collection[i]);
     }
     return collection;
@@ -150,7 +150,6 @@ var _ = {};
   // Calls the method named by functionOrKey on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
-    console.log(collection, functionOrKey);
     return _.map(collection, function (item) {
       return item[functionOrKey] ? item[functionOrKey](args) : 
                                    functionOrKey.apply(item, args);
@@ -171,6 +170,10 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
+    accumulator = accumulator ? accumulator : 0;
+    for (var i = 0; i < collection.length; i++) {
+      
+    }
   };
 
   // Determine if the array or object contains a given value (using `===`).
