@@ -170,10 +170,16 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
-    accumulator = accumulator ? accumulator : 0;
+    // !!!!!!!!!!!!!!!!!!!!!!!!!
+    // This seems very much like a mistake in implementation - I can't imagine
+    // one would want the function to begin with the initial value AND iterate
+    // over the initial value of the collection if no initial value is specified
+    accumulator = accumulator === undefined ? collection[0] : accumulator;
+    
     for (var i = 0; i < collection.length; i++) {
-      
+      accumulator = iterator(collection[i], accumulator);
     }
+    return accumulator;
   };
 
   // Determine if the array or object contains a given value (using `===`).
