@@ -319,9 +319,12 @@ var _ = {};
     var stored = {};
     var result;
 
+    // By using the array-form of the arguments as the key in the key-result
+    // pair, this implementation is ensured to work when a function with multiple
+    // arguments is memoized
     return function() {
-      var key = String(arguments[0]);
-      
+      var key = Array.prototype.slice.call(arguments);
+
       if (stored[key] === undefined) {
         result = func.apply(this, arguments);
         stored[key] = result;
