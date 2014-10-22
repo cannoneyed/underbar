@@ -179,7 +179,7 @@ var _ = {};
     // This implementation makes a lot more sense, at least for addition
     //accumulator = accumulator === undefined ? 0 : accumulator;
 
-    _.each(collection, function (item, index) {
+    _.each(collection, function (item) {
       accumulator = iterator(accumulator, item);
     });
 
@@ -191,7 +191,6 @@ var _ = {};
     // TIP: Many iteration problems can be most easily expressed in
     // terms of reduce(). Here's a freebie to demonstrate!
     return _.reduce(collection, function(wasFound, item) {
-      console.log(item, target);
       if (wasFound) {
         return true;
       }
@@ -202,7 +201,19 @@ var _ = {};
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    // TIP: Try re-using reduce() here.
+    // If an empty collection is passed, return true
+    if (collection.length === 0 || Object.keys(collection).length === 0) {
+      return true;
+    }
+
+    // If no truth test is passed, treat each item as a callback result
+    if (!iterator) {
+      iterator = _.identity;
+    }
+    
+    return _.reduce(collection, function (accumulator, item) {
+        return (!!iterator(item) && (accumulator === true));
+    }, true);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
