@@ -454,6 +454,7 @@ var _ = {};
       for (var j = 1; j < args.length; j++) {
         if (_.contains(args[j], args[0][i])) {
           count ++;
+          break;
         }
       }
       if (count === args.length - 1) {
@@ -473,6 +474,7 @@ var _ = {};
       for (var j = 1; j < args.length; j++) {
         if (_.contains(args[j], args[0][i])) {
           count ++;
+          break;
         }
       }
       if (count === 0) {
