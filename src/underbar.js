@@ -384,6 +384,22 @@ var _ = {};
   // of that string. For example, _.sortBy(people, 'name') should sort
   // an array of people by their name.
   _.sortBy = function(collection, iterator) {
+    if (typeof iterator === 'function') {
+      collection.sort(function (left, right) {
+        left = iterator(left);
+        right = iterator(right);
+        if (left > right) return 1;
+        if (left < right) return -1;
+      });
+    } else if (typeof iterator === 'string') {
+      collection.sort(function (left, right) {
+        left = left[iterator];
+        right = right[iterator];
+        if (left > right) return 1;
+        if (left < right) return -1;
+      })
+    }
+    return collection;
   };
 
   // Zip together two or more arrays with elements of the same index
