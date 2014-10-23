@@ -408,6 +408,20 @@ var _ = {};
   // Example:
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
+    var results = [];
+    var args = Array.prototype.slice.call(arguments);
+    var longest = _.map(args, function (arr) { return arr.length; 
+      }).sort()[args.length - 1];
+
+    for (var item = 0; item < longest; item++) {
+      var toAdd = [];
+      for (var arr = 0; arr < args.length; arr++) {
+        toAdd.push(arguments[arr][item]);
+      }
+      results.push(toAdd);
+    }
+    
+    return results;
   };
 
   // Takes a multidimensional array and converts it to a one-dimensional array.
