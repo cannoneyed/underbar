@@ -420,7 +420,7 @@ var _ = {};
       }
       results.push(toAdd);
     }
-    
+
     return results;
   };
 
@@ -447,6 +447,20 @@ var _ = {};
   // Takes an arbitrary number of arrays and produces an array that contains
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
+    var args = Array.prototype.slice.call(arguments);
+    var results = [];
+    for (var i = 0; i < args[0].length; i++) {
+      var count = 0;
+      for (var j = 1; j < args.length; j++) {
+        if (_.contains(args[j], args[0][i])) {
+          count ++;
+        }
+      }
+      if (count === args.length - 1) {
+        results.push(args[0][i]);
+      }
+    }
+    return results;
   };
 
   // Take the difference between one array and a number of other arrays.
