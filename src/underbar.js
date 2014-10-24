@@ -494,31 +494,6 @@ var _ = {};
   // during a given window of time.
   //
   // See the Underbar readme for details.
-  /*
-  _.throttle = function(func, wait) {
-    var then = 0;
-    var readyToGo = true;
-    console.log("--------");
-
-    return function () {
-      var now = new Date();
-      if (!then) then = now;
-
-      console.log(now - then, wait);
-
-      if (now - then >= wait) {
-        readyToGo = true;
-      }
-
-      console.log("test", readyToGo);
-      if (readyToGo) { 
-        readyToGo = false;
-        then = new Date();
-        return func.apply(this);
-      }
-    }
-  };
-  */
   _.throttle = function (func, wait) {
     var result;
     var previous;
