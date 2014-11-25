@@ -41,9 +41,9 @@ var _ = {};
   _.last = function(array, n) {
     if (n === undefined) {
       return array[array.length - 1];
-    } 
-    else if (n > array.length) { 
-      n = array.length;   
+    }
+    else if (n > array.length) {
+      n = array.length;
     }
 
     return array.slice(array.length - n, array.length);
@@ -60,7 +60,7 @@ var _ = {};
       for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
-    } 
+    }
     else {
       for (var k in collection) {
         iterator(collection[k], k, collection);
@@ -125,7 +125,7 @@ var _ = {};
   };
   // !!!!!!!!!!!!!!!!!!!!!
   // This implementation of map modifies the passed array, which might
-  // not be the actual way to implement this function. It may need to 
+  // not be the actual way to implement this function. It may need to
   // make a copy of the passed array to ensure that the iterator function
   // can access all of the passed array.
 
@@ -151,7 +151,7 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
     return _.map(collection, function (item) {
-      return item[functionOrKey] ? item[functionOrKey](args) : 
+      return item[functionOrKey] ? item[functionOrKey](args) :
                                    functionOrKey.apply(item, args);
     });
   };
@@ -346,7 +346,7 @@ var _ = {};
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
     var args = Array.prototype.slice.call(arguments);
-    setTimeout(function () { func.apply(this, args.slice(2, args.length));                         
+    setTimeout(function () { func.apply(this, args.slice(2, args.length));
     }, wait);
   };
 
@@ -410,7 +410,7 @@ var _ = {};
   _.zip = function() {
     var results = [];
     var args = Array.prototype.slice.call(arguments);
-    var longest = _.map(args, function (arr) { return arr.length; 
+    var longest = _.map(args, function (arr) { return arr.length;
       }).sort()[args.length - 1];
 
     for (var item = 0; item < longest; item++) {
@@ -433,8 +433,8 @@ var _ = {};
     (function flatten (arr) {
       for (var i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i])) {
-          flatten (arr[i]);  
-        } 
+          flatten (arr[i]);
+        }
         else {
           flattened.push(arr[i]);
         }
@@ -482,7 +482,7 @@ var _ = {};
       }
     }
     return results;
-  };    
+  };
 
 
   /**
@@ -503,8 +503,8 @@ var _ = {};
     return function () {
       var args = arguments;
       var now = new Date();
-      
-      if (!previous) { 
+
+      if (!previous) {
         previous = now;
       }
 

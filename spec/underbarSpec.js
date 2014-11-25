@@ -635,6 +635,7 @@ describe('difference', function() {
 });
 
 describe("throttle", function() {
+
   it('throttled functions should only be able to be called again after the specified time', function(done) {
     var counter = 0;
     var incr = function() {
@@ -643,7 +644,6 @@ describe("throttle", function() {
     var throttledIncr = _.throttle(incr, 32);
     throttledIncr();
     throttledIncr();
-
     expect(counter).to.eql(1);
     setTimeout(function() {
       expect(counter).to.eql(2);
@@ -691,4 +691,5 @@ describe("throttle", function() {
       done();
     }, 192);
   })
+
 });
